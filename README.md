@@ -42,9 +42,38 @@ For a more exhaustive introduction to the mechanics of an LSTM, we recommend rea
 
 If you look at the sequential diagram below, you will notice that the same Neural Network [A], is used at each time point, from which temporal data [X] is input into the network. The term h [the output of the network] is used in what is referred to the cell state C, which is computed at each time point and fed into the network at the next time point, and also used for prediction at the next time point. The cell state gives us the state of the system, and h tells us how to update it. This term allows us to keep track of previous information, and present it to the network in the next iteration.
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110244736-c88af700-7f25-11eb-9f3c-326150ab59e7.png" />
+</p>
+
+The diagram above shows different gates in each iteration of the Neural Network A. We will show what each of these do below.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110244794-1142b000-7f26-11eb-9aec-55907b2c7af1.png" />
+</p>
+
+As shown above, the first gate takes the previous message h, and the current data, and uses the sigmoid activation function to decide what information to forget with regard to the old cell state. Below, the next step involves deciding what new information to input into the cell state.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110244794-1142b000-7f26-11eb-9aec-55907b2c7af1.png" />
+</p>
+
+Next, we then aggregate this information into the cell state, as shown below.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110244937-c70dfe80-7f26-11eb-8e4d-40c671127708.png" />
+</p>
+
+Finally, the network gives its output, as shown below.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110247162-73a0ae00-7f30-11eb-8515-f6e932ae2276.png" />
+</p>
+
+The main takeaway is that LSTM is a recurrent neural network, which allows us to take into account temporal dynamics. This ends the introduction, and we will now explain the pipeline of the model in the paper.
 
 
-**2.   List item**
+# **2.   The Structure of the Model**
 
 
 
