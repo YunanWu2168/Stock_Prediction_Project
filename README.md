@@ -75,9 +75,71 @@ The main takeaway is that LSTM is a recurrent neural network, which allows us to
 
 # **2.   The Structure of the Model**
 
+Now that we have everything detailed, we will give a quick description of the structure of the model. The paper uses VADER, a sentiment analysis tool that allows us to extract polarity of the sentiment [and it’s intensity] from textual data.
+
+The model starts off with two ARMA models. One ARMA model is for stock price [or any desire financial parameter] at a collection of successive time points [the training data]. The test data are the remaining time points from the dataset. Another ARMA model is for the sentiment of the stock market / stock parameters [from financial news], and that similarly is partitioned into train and test data. Our overall model is thus a linear combination of these two ARMA models, plus a constant.
+
+We now have an optimization problem. We want to find the parameters of the linear combination that minimize the sum of the squares of the errors at each time point [between our ARMA model and the training data]. This is where LSTM comes in. Incorporating this into the loss function, we use the LSTM to train our temporal data and optimize the network from which we can do predictions. The model is shown below.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110247305-37ba1880-7f31-11eb-836e-9e1d09365fa4.png" />
+</p>
 
 
+Note that in the model above, the Joint ARMA Model data goes into the loss function that is used in training the LSTM. Now the missing link, which we haven’t shown above, is the Differential Privacy component. Data on each dimension is injected with noise, which is drawn from a normal distribution, each with different mean and variance.
 
+# **3.   Implementing the Model**
+
+Here, we put the codes and apply it with our dataset:
+
+**3.1 Dataset**
+
+- Historical Stock Prices: This data contains minute-level historical prices in the past 5 years for 86 companies. 
+- News articles: This data contains 29630 news articles, each of which corresponds to a specific company (e.g., Apple Inc.). The news articles are categorized by company name. Each article includes four fields: “title”, “full text”, “URL” and “publish time”. There are 81 companies in total, all the companies are included in data 1.
+
+**3.2 News Dataset Preprocess**
+
+- Load all .json files use json.loads(), basically each .json file only contains 1 line
+
+```
+json_list = []
+
+dirpath = 'path for the /stock/'
+for filePath in list_files(dirpath):
+     if filePath.endswith('.json'):
+            with open(filePath) as f:
+                for line in f:
+                    data = json.loads(line)
+                    for j in range(len([*data])):
+                        for k in range(len(data[[*data][j]])):
+                            json_list.append([data[[*data][j]][k]['pub_time'], [*data][j], data[[*data][j]][k]['title'], data[[*data][j]][k]['text'], data[[*data][j]][k]['url']])
+
+```
+
+Make sure the length of json list matches the total files.
+
+```
+len(json_list) # 29630
+```
+
+Convert Json to DataFrame in order to perform data analysis.
+
+```
+col_names =  ['published_date','company','title','body','url']
+df= pd.DataFrame(json_list,columns=col_names)
+```
+
+Sort the data by date and save the file.
+```
+df = df.sort_values(by=['published_date'], ascending=True)
+df=df.reset_index(inplace=False)
+df.to_csv('new_data_articles.csv')
+```
+
+
+# **4.   Summary**
+
+To summarize, we covered how sentiment and financial news, which vary with time, can be used to predict future prices of stocks, trained with a recurrent neural network, which takes into account the time dependency, known as LSTM. In addition, differential privacy is used, which adds noise to our data, which in principle can be used to prevent.
 
 
 
