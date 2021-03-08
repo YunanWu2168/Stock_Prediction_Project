@@ -321,6 +321,72 @@ model.compile(loss='mean_squared_error',
 model.fit(x_train,y_train,epochs=20,batch_size=batch_size)
 ```
 
+**3.7 Evaluation on the Testing Dataset**
+
+```
+data=x_test
+prediction_seqs = []
+window_size=sequence_length
+pre_win_num=int(len(data)/prediction_len)
+
+for i in range(0,pre_win_num):
+    curr_frame = data[i*prediction_len]
+    predicted = []
+    for j in range(0,prediction_len):
+        temp=model.predict(curr_frame[newaxis,:,:])[0]
+        predicted.append(temp)
+        curr_frame = curr_frame[1:]
+        curr_frame = np.insert(curr_frame, [window_size-2], predicted[-1], axis=0)
+    prediction_seqs.append(predicted)
+
+de_predicted=[]
+len_pre_win=int(len(data)/prediction_len)
+len_pre=prediction_len
+
+m=0
+for i in range(0,len_pre_win):
+    for j in range(0,len_pre):
+        de_predicted.append(prediction_seqs[i][j][0]*record_max[m]+record_min[m])
+        m=m+1
+print(de_predicted)
+```
+
+Accuracy, MSE and loss on testing dataset:
+
+```
+error = []
+diff=y_test.shape[0]-prediction_len*pre_win_num
+
+for i in range(y_test_ori.shape[0]-diff):
+    error.append(y_test_ori[i,] - de_predicted[i])
+    
+squaredError = []
+absError = []
+for val in error:
+    squaredError.append(val * val) 
+    absError.append(abs(val))
+    
+error_percent=[]
+for i in range(len(error)):
+    val=absError[i]/y_test_ori[i,]
+    val=abs(val)
+    error_percent.append(val)
+    
+mean_error_percent=sum(error_percent) / len(error_percent)
+accuracy=1-mean_error_percent
+MSE=sum(squaredError) / len(squaredError)
+```
+
+For the single company prediction, we finally get MSE: 79.94, Accuracy: 0.9712 and mean error percent: 0.028.
+The results demonstrates the good stock predicitons if we use the news from that company.
+
+**3.8 Train LSTM model on stock prediciton from all companies**
+
+Furthermore, we want to see if the stock predicitons of BA would be increased if we use the news from all other companies.
+
+All similar steps are processed in step 3.5~3.8. And the final results on the testing dataset are:
+
+
 
 
 # **4.   Summary**
