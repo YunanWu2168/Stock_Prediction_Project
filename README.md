@@ -9,13 +9,13 @@ Team member: Shamal Lalvani and Yunan Wu
 
 This tutorial is divided into seven parts; they are:
 
-- 1. Introduction
-- 2. The Structure of the Model
-- 3. Implementing the Model
-- 4. Summary
+- [1. Introduction](#**1.-Introduction**)
+- [2. The Structure of the Model](#**2.-the-structure-of-the-model**)
+- [3. Implementing the Model ](#**3.-implementung-the-model**)
+- [4. Summary](#**4.-summary**)
 
 
-# **1.   Introduction**
+# **1. Introduction**
 
 In This post, Yunan and Shamal cover the techniques used in the paper DP-LSTM: Differential Privacy-inspired LSTM for Stock Prediction Using Financial News [#l], which aims to predict financial data with the use of financial news and historical data. The main techniques used in this paper are sentiment analysis, the most basic time-series model known as ARMA, and a neural-network known as LSTM. In addition, this paper uses techniques inspired by differential privacy to learn robustness of financial trends based off of financial news. In this post, Yunan and I summarize the techniques of this paper in a manner in which will be readily available to a novice reader. The hope is that after reading this post, you will feel comfortable understanding and implementing techniques such as Neural Networks and Sentiment Analysis to conduct their own desired analyses on financial data, or any data that evolves over time. We would like to thank the authors of the paper for making their code available on Github. 
 
@@ -81,7 +81,7 @@ Finally, the network gives its output, as shown below.
 The main takeaway is that LSTM is a recurrent neural network, which allows us to take into account temporal dynamics. This ends the introduction, and we will now explain the pipeline of the model in the paper.
 
 
-# **2.   The Structure of the Model**
+# **2. The Structure of the Model**
 
 Now that we have everything detailed, we will give a quick description of the structure of the model. The paper uses VADER, a sentiment analysis tool that allows us to extract polarity of the sentiment [and it’s intensity] from textual data.
 
@@ -96,7 +96,7 @@ We now have an optimization problem. We want to find the parameters of the linea
 
 Note that in the model above, the Joint ARMA Model data goes into the loss function that is used in training the LSTM. Now the missing link, which we haven’t shown above, is the Differential Privacy component. Data on each dimension is injected with noise, which is drawn from a normal distribution, each with different mean and variance.
 
-# **3.   Implementing the Model**
+# **3. Implementing the Model**
 
 Here, we put the codes and apply it with our dataset:
 
@@ -397,7 +397,7 @@ All similar steps are processed in step 3.5~3.8. And the final results on the te
 
 
 
-# **4.   Summary**
+# **4. Summary**
 
 To summarize, we covered how sentiment and financial news, which vary with time, can be used to predict future prices of stocks, trained with a recurrent neural network, which takes into account the time dependency, known as LSTM. In addition, differential privacy is used, which adds noise to our data, which in principle can be used to prevent. 
 
