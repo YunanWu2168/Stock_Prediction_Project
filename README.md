@@ -238,10 +238,96 @@ for i in range(0,sp_len):
     }),ignore_index=True)
 ```
 
+**3.6 Add Noise to the Data**
+
+Next, we add some noise to the sentiment score, to make the model more robust。 The noise variance is calculated and added to the score.
+
+```
+wsj_var=np.var(df.mean_compound)
+mu=0
+noise=0.1
+sigma_wsj=noise*wsj_var
+df_noise['noise']=df['mean_compound']
+
+for i in range(0,n):
+    df_noise['noise'][i]+=np.random.normal(mu,sigma_wsj)
+    
+```
+
+**3.6 Train LSTM model on stock prediciton from a single company (BA)**
+
+After we prepare the sentiment score with noise and the stock price. We can start building the model!
+
+We split the dataset into 85% for training and the rest 15% for validation. And below are the settings of parameters:
+
+```
+split = (0.85)
+sequence_length=10;
+normalise= True
+batch_size=100;
+input_dim=2
+input_timesteps=9
+neurons=50
+epochs=5
+prediction_len=1
+dense_output=1
+drop_out=0
+```
+
+And choose the time window:
+
+```
+for win_i in range(0,win_num):
+    normalised_window = []
+    for col_i in range(0,1):#col_num):
+        temp_col=window_data[win_i,:,col_i]
+        temp_min=min(temp_col)
+        if col_i==0:
+            record_min.append(temp_min)#record min
+        temp_col=temp_col-temp_min
+        temp_max=max(temp_col)
+        if col_i==0:
+            record_max.append(temp_max)#record max
+        temp_col=temp_col/temp_max
+        normalised_window.append(temp_col)
+    for col_i in range(1,col_num):
+        temp_col=window_data[win_i,:,col_i]
+        normalised_window.append(temp_col)
+    normalised_window = np.array(normalised_window).T
+    normalised_data.append(normalised_window)
+normalised_data=np.array(normalised_data)
+
+data_windows=normalised_data
+x_train1 = data_windows[:, :-1]
+y_train1 = data_windows[:, -1,[0]]
+print('x_train1.shape',x_train1.shape)
+print('y_train1.shape',y_train1.shape)
+```
+You can find that the size of the training dataset is (1149, 9, 2), where 1149 is the number of days, 9 denotes the first 9 days and 2 are the features. The size of labels is (1149,1). Similarly for the testing dataset, the size is (195, 9, 2).
+
+Finally, we build the model here, which contains three LSTM layers and one dense layer. The loss function is mean square error and the optimizer is adam:
+```
+model = Sequential()
+model.add(LSTM(neurons, input_shape=(input_timesteps, input_dim), return_sequences = True))
+model.add(Dropout(drop_out))
+model.add(LSTM(neurons,return_sequences = True))
+model.add(LSTM(neurons,return_sequences =False))
+model.add(Dropout(drop_out))
+model.add(Dense(dense_output, activation='linear'))
+# Compile model
+model.compile(loss='mean_squared_error',
+                optimizer='adam')
+# Fit the model
+model.fit(x_train,y_train,epochs=20,batch_size=batch_size)
+```
+
+
 
 # **4.   Summary**
 
-To summarize, we covered how sentiment and financial news, which vary with time, can be used to predict future prices of stocks, trained with a recurrent neural network, which takes into account the time dependency, known as LSTM. In addition, differential privacy is used, which adds noise to our data, which in principle can be used to prevent.
+To summarize, we covered how sentiment and financial news, which vary with time, can be used to predict future prices of stocks, trained with a recurrent neural network, which takes into account the time dependency, known as LSTM. In addition, differential privacy is used, which adds noise to our data, which in principle can be used to prevent. 
+
+
 
 
 
