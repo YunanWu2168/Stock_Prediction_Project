@@ -5,6 +5,14 @@
 
 Team member: Shamal Lalvani and Yunan Wu
 
+# **Tutorial Overview**
+
+This tutorial is divided into seven parts; they are:
+
+- 1. Introduction
+- 2. The Structure of the Model
+- 3. Implementing the Model
+- 4. Summary
 
 
 # **1.   Introduction**
