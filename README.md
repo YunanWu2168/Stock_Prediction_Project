@@ -9,10 +9,24 @@ Team member: Shamal Lalvani and Yunan Wu
 
 This tutorial is divided into seven parts; they are:
 
-- [1. Introduction](#**1.-Introduction**)
-- [2. The Structure of the Model](#**2.-the-structure-of-the-model**)
-- [3. Implementing the Model ](#**3.-implementung-the-model**)
-- [4. Summary](#**4.-summary**)
+
+* [1. Introduction](#**1.-Introduction**)
+    * 1.1 What is Sentiment Analysis?
+    * 1.2	What is Differential Privacy?
+    * 1.3 What is ARMA?
+    * 1.4 What is LSTM?
+* [2. The Structure of the Model](#**2.-the-structure-of-the-model**)
+* [3. Implementing the Model ](#**3.-implementung-the-model**)
+     * 3.1 Dataset
+     * 3.2 News Dataset Preprocess
+     * 3.3 Feature Engineering
+     * 3.4 Simplifying Sentiment Analysis using VADER in Python (on Social Media Text)
+     * 3.5 Boeing Stock Prediciton
+     * 3.6 Add Noise to the Dat
+     * 3.7 Train LSTM model on stock prediciton from a single company (BA)
+     * 3.8 Evaluation on the Testing Dataset
+     * 3.9 Train LSTM model on stock prediciton from all companies
+* [4. Summary](#**4.-summary**)
 
 
 # **1. Introduction**
@@ -262,7 +276,7 @@ for i in range(0,n):
     
 ```
 
-**3.6 Train LSTM model on stock prediciton from a single company (BA)**
+**3.7 Train LSTM model on stock prediciton from a single company (BA)**
 
 After we prepare the sentiment score with noise and the stock price. We can start building the model!
 
@@ -329,7 +343,7 @@ model.compile(loss='mean_squared_error',
 model.fit(x_train,y_train,epochs=20,batch_size=batch_size)
 ```
 
-**3.7 Evaluation on the Testing Dataset**
+**3.8 Evaluation on the Testing Dataset**
 
 ```
 data=x_test
@@ -388,7 +402,7 @@ MSE=sum(squaredError) / len(squaredError)
 For the single company prediction, we finally get MSE: 79.94, Accuracy: 0.9712 and mean error percent: 0.028.
 The results demonstrates the good stock predicitons if we use the news from that company.
 
-**3.8 Train LSTM model on stock prediciton from all companies**
+**3.9 Train LSTM model on stock prediciton from all companies**
 
 Furthermore, we want to see if the stock predicitons of BA would be increased if we use the news from all other companies.
 
