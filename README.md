@@ -136,6 +136,108 @@ df=df.reset_index(inplace=False)
 df.to_csv('new_data_articles.csv')
 ```
 
+**3.3 Feature Engineering**
+
+Find the missing data, we can fill it with anything
+
+```
+df[df.isnull().any(axis=1)]
+df_missing_percentage=df.isnull().sum()/df.shape[0] *100
+df=df.fillna('missing')
+```
+
+**3.4 Simplifying Sentiment Analysis using VADER in Python (on Social Media Text)**
+
+Sentiment Analysis, or Opinion Mining, is a sub-field of Natural Language Processing (NLP) that tries to identify and extract opinions within a given text. The aim of sentiment analysis is to gauge the attitude, sentiments, evaluations, attitudes and emotions of a speaker/writer based on the computational treatment of subjectivity in a text.
+
+VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. VADER uses a combination of A sentiment lexicon is a list of lexical features (e.g., words) which are generally labelled according to their semantic orientation as either positive or negative. For more details, please refer to: [sentiment analysis](https://medium.com/analytics-vidhya/simplifying-social-media-sentiment-analysis-using-vader-in-python-f9e6ec6fc52f)
+
+```
+import nltk
+nltk.downloader.download('vader_lexicon')
+
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+sid = SentimentIntensityAnalyzer()
+
+get_ipython().run_cell_magic('time', '', 'title_score = [sid.polarity_scores(sent) for sent in df.title]')
+
+compound=[]
+neg=[]
+neu=[]
+pos=[]
+
+for i in range(len(title_score)):
+    compound.append(title_score[i]['compound'])
+    neg.append(title_score[i]['neg'])
+    neu.append(title_score[i]['neu'])
+    pos.append(title_score[i]['pos'])
+    
+df['compound'] = compound
+df['neg'] = neg
+df['neu'] = neu
+df['pos'] = pos
+```
+After this, you will generate the sentiment score for each company, like this:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110325511-0d259980-7fdd-11eb-91fe-651ee10ebb3a.png" />
+</p>
+
+**3.5 Boeing Stock Prediciton**
+
+Specifically, we select Boeing (BA) and predict its stock price.  
+Here, we import the stock price for BA.
+
+```
+sp = pd.read_csv("path/historical_price/BA_2015-12-30_2021-02-21_minute.csv")#,index_col=0)
+sp=pd.DataFrame(sp)
+```
+And the sentiment analysis for BA and group it by days.
+
+```
+dff1=df[(df.company=='BA')]
+dff1g=dff1.groupby(['published_date']).agg(['mean'])
+```
+Next, we need to fuse these two information together by days. As the stock price is based on minutes, we choose the last day point as the close price for each day.
+```
+for i in range(0,d1.shape[0]):
+    t=d1['published_date'][i]
+    timeStruct = time.strptime(t, "%m/%d/%Y") 
+    d1['published_date'][i] = time.strftime("%Y-%m-%d", timeStruct) 
+
+sp1=sp.copy()
+sp1.drop_duplicates(subset=['Date'], keep='last', inplace = True)
+```
+Then, Union these two tables together:
+```
+date_union_1=pd.DataFrame(columns=('idx','date','mean_compound','comp_flag'))
+sp_len=sp1.shape[0]
+d_len=d1.shape[0]
+d=d1.copy()
+for i in range(0,sp_len):
+    idx=i
+    date=sp1['Date'][i]
+    j=0
+    t=0
+    while j<d_len:
+        if sp1['Date'][i]==d['published_date'][j]:
+            mean_compound=d['compound'][j]
+            comp_flag=1
+            t=1
+            break
+        j=j+1
+    if t==0:
+        mean_compound=0
+        comp_flag=0
+    
+    date_union_1=date_union_1.append(pd.DataFrame({'idx':[idx],
+                                                  'date':[date],
+                                                  'mean_compound':[mean_compound],
+                                                  'comp_flag':[comp_flag]
+        
+    }),ignore_index=True)
+```
+
 
 # **4.   Summary**
 
