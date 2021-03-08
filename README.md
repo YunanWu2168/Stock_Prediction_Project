@@ -7,7 +7,7 @@ Team member: Shamal Lalvani and Yunan Wu
 
 # **Tutorial Overview**
 
-This tutorial is divided into seven parts; they are:
+This tutorial is divided into four parts; they are:
 
 
 * [1. Introduction](#**1.-Introduction**)
