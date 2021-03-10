@@ -14,7 +14,7 @@ This tutorial is divided into four parts; they are:
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#introduction">Introduction</a>
+      <a href="#1-introduction">Introduction</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -57,7 +57,7 @@ This tutorial is divided into four parts; they are:
 
 
 <!-- ABOUT THE PROJECT -->
-# **1. Introduction**
+# **1 Introduction**
 
 In This post, Yunan and Shamal cover the techniques used in the paper DP-LSTM: Differential Privacy-inspired LSTM for Stock Prediction Using Financial News [#l], which aims to predict financial data with the use of financial news and historical data. The main techniques used in this paper are sentiment analysis, the most basic time-series model known as ARMA, and a neural-network known as LSTM. In addition, this paper uses techniques inspired by differential privacy to learn robustness of financial trends based off of financial news. In this post, Yunan and I summarize the techniques of this paper in a manner in which will be readily available to a novice reader. The hope is that after reading this post, you will feel comfortable understanding and implementing techniques such as Neural Networks and Sentiment Analysis to conduct their own desired analyses on financial data, or any data that evolves over time. We would like to thank the authors of the paper for making their code available on Github. 
 
