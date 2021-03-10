@@ -9,40 +9,13 @@ Team member: Shamal Lalvani and Yunan Wu
 
 This tutorial is divided into four parts; they are:
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#1-introduction">Introduction</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
-
-
 * [1. Introduction](#1-introduction)
     * 1.1 What is Sentiment Analysis?
     * 1.2	What is Differential Privacy?
     * 1.3 What is ARMA?
     * 1.4 What is LSTM?
-* [2. The Structure of the Model](#**2.-the-structure-of-the-model**)
-* [3. Implementing the Model ](#**3.-implementung-the-model**)
+* [2. The Structure of the Model](#2-the-structure-of-the-model)
+* [3. Implementing the Model ](#3-implementung-the-model)
      * 3.1 Dataset
      * 3.2 News Dataset Preprocess
      * 3.3 Feature Engineering
@@ -53,7 +26,7 @@ This tutorial is divided into four parts; they are:
      * 3.8 Evaluation on the Testing Dataset
      * 3.9 Train LSTM model on stock prediciton from all companies
      * 3.10 Train LSTM model on stock prediciton without sentiment score
-* [4. Summary](#**4.-summary**)
+* [4. Summary](#4-summary)
 
 
 <!-- ABOUT THE PROJECT -->
@@ -123,7 +96,7 @@ Finally, the network gives its output, as shown below.
 The main takeaway is that LSTM is a recurrent neural network, which allows us to take into account temporal dynamics. This ends the introduction, and we will now explain the pipeline of the model in the paper.
 
 
-# **2. The Structure of the Model**
+# **2 The Structure of the Model**
 
 Now that we have everything detailed, we will give a quick description of the structure of the model. The paper uses VADER, a sentiment analysis tool that allows us to extract polarity of the sentiment [and it’s intensity] from textual data.
 
@@ -138,7 +111,7 @@ We now have an optimization problem. We want to find the parameters of the linea
 
 Note that in the model above, the Joint ARMA Model data goes into the loss function that is used in training the LSTM. Now the missing link, which we haven’t shown above, is the Differential Privacy component. Data on each dimension is injected with noise, which is drawn from a normal distribution, each with different mean and variance.
 
-# **3. Implementing the Model**
+# **3 Implementing the Model**
 
 Here, we put the codes and apply it with our dataset:
 
@@ -487,7 +460,7 @@ To have a better understanding of these different methods, we plot all the predi
 </p>
 
 
-# **4. Summary**
+# **4 Summary**
 
 To summarize, we covered how sentiment and financial news, which vary with time, can be used to predict future prices of stocks, trained with a recurrent neural network, which takes into account the time dependency, known as LSTM. In addition, differential privacy is used, which adds noise to our data, which in principle can be used to prevent. 
 
