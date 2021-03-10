@@ -14,7 +14,7 @@ This tutorial is divided into four parts; they are:
   <summary>Contents</summary>
   <ol>
     <li>
-      <a href="#1.-introduction">1. Introduction</a>
+      <a href="#**1.-introduction**">1. Introduction</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
