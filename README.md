@@ -451,7 +451,14 @@ And we plot the predicitons below:
   <img src="https://user-images.githubusercontent.com/45545175/110560162-22004b00-810b-11eb-946e-d29a1f02c238.png" />
 </p>
 
-The results demonstrate that adding additional sentiment scores from that specific company did increase the model performance.
+The results demonstrate that adding additional sentiment scores from that specific company did increase the model performance. 
+
+To have a better understanding of these different methods, we plot all the predictions together:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110560900-6213fd80-810c-11eb-9b77-9108b3247c85.png" />
+</p>
+
 
 # **4. Summary**
 
