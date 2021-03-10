@@ -36,7 +36,7 @@ This tutorial is divided into four parts; they are:
 </details>
 
 
-* [1. Introduction](#**1.-introduction**)
+* [1. Introduction](#**1-introduction**)
     * 1.1 What is Sentiment Analysis?
     * 1.2	What is Differential Privacy?
     * 1.3 What is ARMA?
