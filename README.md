@@ -15,7 +15,7 @@ This tutorial is divided into four parts; they are:
     * 1.3 What is ARMA?
     * 1.4 What is LSTM?
 * [2. The Structure of the Model](#2-the-structure-of-the-model)
-* [3. Implementing the Model ](#3-implementung-the-model)
+* [3. Implementing the Model ](#3-implementing-the-model)
      * 3.1 Dataset
      * 3.2 News Dataset Preprocess
      * 3.3 Feature Engineering
