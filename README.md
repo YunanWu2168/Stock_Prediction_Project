@@ -402,6 +402,10 @@ MSE=sum(squaredError) / len(squaredError)
 For the single company prediction, we finally get MSE: 79.94, Accuracy: 0.9712 and mean error percent: 0.028.
 The results demonstrates the good stock predicitons if we use the news from that company.
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110559023-16138980-8109-11eb-9f3f-bc62bd35cb24.png" />
+</p>
+
 We can plot the predictions and compare it with the true stock price.
 
 ```
@@ -422,8 +426,17 @@ Furthermore, we want to see if the stock predicitons of BA would be increased if
 
 All similar steps are processed in step 3.5~3.8. And the final results on the testing dataset are:
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110558867-d9e02900-8108-11eb-9ec6-a7509b00b898.png" />
+</p>
 
+We also plot the predictions below:
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110558961-fe3c0580-8108-11eb-84df-7764cfc39abb.png" />
+</p>
+
+The comparisons demonstrate that the performance of the stock predicitons decreases if we add in sentiment scores from other companies.
 
 # **4. Summary**
 
