@@ -26,6 +26,7 @@ This tutorial is divided into four parts; they are:
      * 3.7 Train LSTM model on stock prediciton from a single company (BA)
      * 3.8 Evaluation on the Testing Dataset
      * 3.9 Train LSTM model on stock prediciton from all companies
+     * 3.10 Train LSTM model on stock prediciton without sentiment score
 * [4. Summary](#**4.-summary**)
 
 
@@ -437,6 +438,20 @@ We also plot the predictions below:
 </p>
 
 The comparisons demonstrate that the performance of the stock predicitons decreases if we add in sentiment scores from other companies.
+
+**3.9 Train LSTM model on stock prediciton without sentiment score**
+Finally, we trained the model only with the stock price from previous days without the sentiment score.
+
+Here are the results:
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110560120-0a28c700-810b-11eb-8f18-9bc693d7dab4.png" />
+</p>
+And we plot the predicitons below:
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110560162-22004b00-810b-11eb-946e-d29a1f02c238.png" />
+</p>
+
+The results demonstrate that adding additional sentiment scores from that specific company did increase the model performance.
 
 # **4. Summary**
 
