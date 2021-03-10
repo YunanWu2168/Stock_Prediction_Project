@@ -10,7 +10,7 @@ Team member: Shamal Lalvani and Yunan Wu
 This tutorial is divided into four parts; they are:
 
 
-* [1. Introduction](#**1.-Introduction**)
+* [1. Introduction](#**1.-introduction**)
     * 1.1 What is Sentiment Analysis?
     * 1.2	What is Differential Privacy?
     * 1.3 What is ARMA?
