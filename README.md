@@ -402,6 +402,20 @@ MSE=sum(squaredError) / len(squaredError)
 For the single company prediction, we finally get MSE: 79.94, Accuracy: 0.9712 and mean error percent: 0.028.
 The results demonstrates the good stock predicitons if we use the news from that company.
 
+We can plot the predictions and compare it with the true stock price.
+
+```
+import matplotlib.pyplot as plt
+plt.plot(de_predicted, label = 'predicted')
+plt.plot(y_test_ori, label = 'real')
+plt.legend()
+```
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110556640-8e2b8080-8104-11eb-81aa-a8082f08ca34.png" />
+</p>
+
+
 **3.9 Train LSTM model on stock prediciton from all companies**
 
 Furthermore, we want to see if the stock predicitons of BA would be increased if we use the news from all other companies.
