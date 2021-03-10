@@ -439,7 +439,7 @@ We also plot the predictions below:
 
 The comparisons demonstrate that the performance of the stock predicitons decreases if we add in sentiment scores from other companies.
 
-**3.9 Train LSTM model on stock prediciton without sentiment score**
+**3.10 Train LSTM model on stock prediciton without sentiment score**
 Finally, we trained the model only with the stock price from previous days without the sentiment score.
 
 Here are the results:
