@@ -500,10 +500,15 @@ References
 
 
 [1] https://arxiv.org/pdf/1912.10806.pdf
+
 [2] https://www.nature.com/articles/s42256-019-0112-6
+
 [3] https://blog.cryptographyengineering.com/2016/06/15/what-is-differential-privacy/
+
 [4] https://www.microsoft.com/en-us/research/publication/differential-privacy/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F64346%2Fdwork.pdf
+
 [5] https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model
+
 [6] https://colah.github.io/posts/2015-08-Understanding-LSTMs/
 
 
