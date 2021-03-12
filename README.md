@@ -400,7 +400,7 @@ accuracy=1-mean_error_percent
 MSE=sum(squaredError) / len(squaredError)
 ```
 
-For the single company prediction, we finally get MSE: 79.94, Accuracy: 0.9712 and mean error percent: 0.028.
+For the single company prediction, we finally get MSE: 57.95, Accuracy: 0.9712 and mean error percent: 0.028.
 The results demonstrates the good stock predicitons if we use the news from that company.
 
 <p align="center">
