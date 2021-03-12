@@ -420,8 +420,22 @@ plt.legend()
   <img src="https://user-images.githubusercontent.com/45545175/110556640-8e2b8080-8104-11eb-81aa-a8082f08ca34.png" />
 </p>
 
+**3.9 Train LSTM model on stock prediciton from this specific company but no noise**
 
-**3.9 Train LSTM model on stock prediciton from all companies**
+Next, we want to see if the stock predicitons of BA would be affected if we don't add noise to the sentiment score.
+Here are the results
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110983892-fb6f2980-832f-11eb-8d86-3893931c9456.png" />
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/45545175/110983937-0c1f9f80-8330-11eb-9a26-4088cf249227.png" />
+</p>
+
+Compared with the previous result, it shows that adding noise to the model have a better predictions of the stock price, which means that adding noise makes the model more generalizable. 
+
+**3.10 Train LSTM model on stock prediciton from all companies**
 
 Furthermore, we want to see if the stock predicitons of BA would be increased if we use the news from all other companies.
 
@@ -439,7 +453,8 @@ We also plot the predictions below:
 
 The comparisons demonstrate that the performance of the stock predicitons decreases if we add in sentiment scores from other companies.
 
-**3.10 Train LSTM model on stock prediciton without sentiment score**
+**3.11 Train LSTM model on stock prediciton without sentiment score**
+
 Finally, we trained the model only with the stock price from previous days without the sentiment score.
 
 Here are the results:
