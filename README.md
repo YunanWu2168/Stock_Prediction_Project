@@ -24,8 +24,9 @@ This tutorial is divided into four parts; they are:
      * 3.6 Add Noise to the Dat
      * 3.7 Train LSTM model on stock prediciton from a single company (BA)
      * 3.8 Evaluation on the Testing Dataset
-     * 3.9 Train LSTM model on stock prediciton from all companies
-     * 3.10 Train LSTM model on stock prediciton without sentiment score
+     * 3.9 Train LSTM model on stock prediciton from this specific company but no noise
+     * 3.10 Train LSTM model on stock prediciton from all companies
+     * 3.11 Train LSTM model on stock prediciton without sentiment score
 * [4. Summary](#4-summary)
 
 
@@ -477,7 +478,7 @@ To have a better understanding of these different methods, we plot all the predi
 
 # **4 Summary**
 
-To summarize, we covered how sentiment and financial news, which vary with time, can be used to predict future prices of stocks, trained with a recurrent neural network, which takes into account the time dependency, known as LSTM. In addition, differential privacy is used, which adds noise to our data, which in principle can be used to prevent. 
+To summarize, we covered how sentiment and financial news, which vary with time, can be used to predict future prices of stocks, trained with a recurrent neural network, which takes into account the time dependency, known as LSTM. In addition, differential privacy is used, which adds noise to our data, which in principle can be used to prevent. In our experiment, we found that adding noise makes the model more robust. The information of the sentiment analysis from specific company is able to improve the prediciton of the stock price. However, if you use the sentiment analysis from other companies, it adds useless information and decreases the performance of the stock prediction. 
 
 
 
