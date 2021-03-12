@@ -506,7 +506,6 @@ References
 [5] https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model
 [6] https://colah.github.io/posts/2015-08-Understanding-LSTMs/
 
-![image](https://user-images.githubusercontent.com/69286952/110992777-00d27100-833c-11eb-83b0-bf867c297b2b.png)
 
 
 
