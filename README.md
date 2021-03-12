@@ -495,14 +495,17 @@ To have a better understanding of these different methods, we plot all the predi
 To summarize, we covered how sentiment and financial news, which vary with time, can be used to predict future prices of stocks, trained with a recurrent neural network, which takes into account the time dependency, known as LSTM. In addition, differential privacy is used, which adds noise to our data, which in principle can be used to prevent. In our experiment, we found that adding noise makes the model more robust. The information of the sentiment analysis from specific company is able to improve the prediciton of the stock price. However, if you use the sentiment analysis from other companies, it adds useless information and decreases the performance of the stock prediction. 
 
 
+
 References
 
-[1][Li et. Al] https://arxiv.org/pdf/1912.10806.pdf
-[2] Stop words Paper
+
+[1] https://arxiv.org/pdf/1912.10806.pdf
+[2] https://www.nature.com/articles/s42256-019-0112-6
 [3] https://blog.cryptographyengineering.com/2016/06/15/what-is-differential-privacy/
 [4] https://www.microsoft.com/en-us/research/publication/differential-privacy/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F64346%2Fdwork.pdf
 [5] https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model
 [6] https://colah.github.io/posts/2015-08-Understanding-LSTMs/
+
 ![image](https://user-images.githubusercontent.com/69286952/110992777-00d27100-833c-11eb-83b0-bf867c297b2b.png)
 
 
