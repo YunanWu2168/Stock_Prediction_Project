@@ -5,7 +5,7 @@
 
 Team member: Shamal Lalvani and Yunan Wu
 
-The YouTube link for the project presentation: [link](https://youtu.be/d1jJKwwqYFk)
+
 
 # **Tutorial Overview**
 
